@@ -2,24 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
 
-
-  def home
-    @userData = User.all.length
-    @currentData = rand(1..@userData)
-    @user = User.find(@currentData)
-    if params[:id]
-      if params[:id].to_i > @userData
-        @currentData = 0
-      else
-        @currentData =  params[:id].to_i + 1
-        @user = User.find(params[:id])
-      end
-    end
-  end
-
   def index
-    @users = User.all.where.not(sexe: current_user.sexe)
-     render json: @users
+    @users = User.all
   end
 
   def new

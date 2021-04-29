@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      redirect_to home_path
+      redirect_to users_path
    else
      flash.now[:danger] = 'connexion échouée'
     render :new

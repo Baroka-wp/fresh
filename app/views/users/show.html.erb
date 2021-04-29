@@ -1,7 +1,5 @@
-
-<div class="userProfilShow">
-  <div class="">
-    <a href="/home" id="close-popup" class="close-popup"><i class="fas fa-times"> fermer</i></a>
+<div class="">
+    <a href="/users" id="close-popup" class="close-popup"><i class="fas fa-times"> fermer</i></a>
     <div id="userShow" class="userShow">
         <%= image_tag @user.profil.url, id:"userProfile"%>
         <div class=" userDetail">
@@ -22,8 +20,3 @@
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </div>
-</div>
-
-
-
-<%= javascript_pack_tag 'home' %>

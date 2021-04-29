@@ -1,1 +1,23 @@
+<div id="container" class="scrollcontainer">
+    <button class=" scroll scroll-left" id="scroll-left">
+      <i class=" fas fa-heart-broken active"></i>
+    </button>
+    <div id="userShow" class="userShow">
 
+    </div>
+    <div>
+      <button  class=" scroll scroll-right" id="scroll-right">
+        <i class="fas fa-heart active"></i>
+      </button>
+    </div>
+</div>
+<div class="popup-container hidden" id="user-popup">
+  <div class="popup">
+    <button id="close-popup" class="close-popup"><i class="fas fa-times"> fermer</i></button>
+    <div class="user-info" id="user-info">
+    </div>
+  </div>
+</div>
+
+
+<%= javascript_pack_tag 'home' %>

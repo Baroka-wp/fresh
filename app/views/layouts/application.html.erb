@@ -17,7 +17,6 @@
       <%= content_tag(:div,value,class:"alert alert-#{key}")%>
     <% end%>
     <div class="container">
-
       <header>
         <% if logged_in? %>
           <p><%= link_to "Mon profil", user_path(current_user.id), class:"fas fa-user-alt", id:"showProfile"%></p>
@@ -27,9 +26,10 @@
           <p><a href="/users/new"><i class="fas fa-sign-out-alt"> S'incrire</i></a></p>
           <p><a href="/sessions/new"><i class="fas fa-sign-out-alt"> Se connecter</i></a></p>
         <% end %>
-      </header>
-
-      <%= yield %>
+      </header >
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
