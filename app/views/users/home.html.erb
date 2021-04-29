@@ -1,0 +1,68 @@
+<div class="bodyBag">
+  <% if @currentData == 0 %>
+  <div class="">
+    <div id="container" class="userContainer">
+       <div id="userShow" class="userShow">
+           <div class=" userDetail">
+           </div>
+        </div>
+    </div>
+    <div class="popup-container" id="user-popup">
+       <div class="popup">
+         <a href="/home/?id=<%=@userData %>" id="close-popup" class="close-popup"><i class="fas fa-times"></i></a>
+         <div class="user-info" id="user-info">
+           <p>Vous avez tout vu</p>
+         </div>
+         </div>
+      </div>
+  </div>
+  <footer>
+    <p>© ︎ baroka 2021 - fresh</p>
+  </footer>
+</div>
+  <% else %>
+  <div class="bodyBag" id="bodyBag">
+    <div id="container" class="userContainer">
+       <a href="/home/?id=<%=@currentData%>"  class=" scroll scroll-left" id="scroll-left">
+         <i class=" fas fa-heart-broken active"></i>
+       </a>
+       <div id="userShow" class="userShow">
+           <%= image_tag @user.profil.url, id:"userProfile"%>
+           <div class=" userDetail">
+           <div>
+             <h3 id="userName"><%= @user.name %></h3>
+             <p id="userSexe"><%= @user.sexe %></p>
+           </div>
+           <div class="user-body ">
+             <button class="fav-btn">
+               <i class="fas fa-heart active"> 50 %</i>
+             </button>
+           </div>
+         </div>
+       </div>
+       <div>
+         <a href="/home/?id=<%=@currentData %>" class=" scroll scroll-right" id="scroll-right">
+           <i class="fas fa-heart active"></i>
+         </a>
+       </div>
+     </div>
+     <div class="popup-container hidden" id="user-popup">
+        <div class="popup">
+          <button id="close-popup" class="close-popup"><i class="fas fa-times"></i></button>
+            <%= image_tag @user.profil.url, id:"userProfile"%>
+            <div class="right">
+            <h1><%= @user.name %></h1>
+            <div class="fav-btn">
+              <i class="fas fa-heart active"> 50% </i> <small>de compatibilité avec <%= @user.name %></small>
+            </div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo aliquam, consequuntur iste, quo quasi
+              facere libero, assumenda cum similique voluptates quis id deleniti soluta? Minus culpa magnam ullam dolore
+              doloribus?</p>
+            <div>
+            </div>
+          </div>
+          </div>
+      </div>
+      </div>
+<% end %>
+<%= javascript_pack_tag 'home' %>

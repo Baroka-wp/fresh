@@ -1,0 +1,29 @@
+
+<div class="userProfilShow">
+  <div class="">
+    <a href="/home" id="close-popup" class="close-popup"><i class="fas fa-times"> fermer</i></a>
+    <div id="userShow" class="userShow">
+        <%= image_tag @user.profil.url, id:"userProfile"%>
+        <div class=" userDetail">
+        <div>
+          <h3 id="userName"><%= @user.name %></h3>
+          <p id="userSexe"><%= @user.sexe %></p>
+        </div>
+        <div class="user-body ">
+          <button class="fav-btn">
+            <i class="fas fa-heart active"> 50 %</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="userBio">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+</div>
+
+
+
+<%= javascript_pack_tag 'home' %>

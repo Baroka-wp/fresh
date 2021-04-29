@@ -1,0 +1,13 @@
+<div class="  form ">
+ <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+            <%= f.label :name %>
+            <br>
+            <%= f.text_field :name,autofocus: true, autocomplete: "name", required: true %>
+            <%= f.label :password %>
+            <br>
+            <%= f.password_field :password, autofocus: true, required: true %>
+            <br>
+            <br>
+            <%= f.submit "SE CONNECTER" %>
+  <% end %>
+</div>

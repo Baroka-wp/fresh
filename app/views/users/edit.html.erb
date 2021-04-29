@@ -1,0 +1,57 @@
+<div class="  form ">
+  <%= form_with(model: @user, local: true) do |f| %>
+          <% if @user.errors.any? %>
+              <div id="error_explanation">
+                  <h2>
+                      <%= pluralize(@user.errors.count, "error" ) %> prohibited this <%= @user.name %> from being saved:
+                  </h2>
+                  <ul>
+                      <% @user.errors.full_messages.each do |message| %>
+                          <li>
+                              <%= message %>
+                          </li>
+                          <% end %>
+                  </ul>
+              </div>
+          <% end %>
+            <%= f.label :profil %>
+            <br>
+            <%= f.file_field :profil, autofocus: true%>
+            <br>
+            <%= f.label :name %>
+            <br>
+            <%= f.text_field :name,autofocus: true, autocomplete: "name", required: true %>
+            <br>
+            <%= f.label :sexe %>
+            <br>
+            <%= f.text_field :sexe, autofocus: true, autocomplete: "sexe", required: true%>
+            <br>
+            <%= f.label :age %>
+            <br>
+            <%= f.text_field :age, autofocus: true, autocomplete: "age", required: true%>
+            <br>
+            <%= f.label :pays %>
+            <br>
+            <%= f.text_field :pays, autofocus: true, autocomplete: "pays", required: true%>
+            <br>
+            <%= f.label :ville %>
+            <br>
+            <%= f.text_field :ville, autofocus: true, autocomplete: "ville", required: true%>
+            <br>
+            <%= f.label :bio %>
+            <br>
+            <%= f.text_field :bio, autofocus: true, autocomplete: "bio", required: true%>
+            <br>
+            <%= f.label :password %>
+            <br>
+            <%= f.password_field :password, autofocus: true, required: true %>
+            <br>
+            <%= f.label :password_confirmation %>
+            <br>
+            <%= f.password_field :password_confirmation, autofocus: true, required: true %>
+            <br>
+            <br>
+            <%= f.submit "MODIFIER UN COMPTE" %>
+  <% end %>
+
+</div>

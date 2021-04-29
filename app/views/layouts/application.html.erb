@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fresh</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  </head>
+  <body>
+    <% flash.each do |key, value|%>
+      <%= content_tag(:div,value,class:"alert alert-#{key}")%>
+    <% end%>
+    <div class="container">
+
+      <header>
+        <% if logged_in? %>
+          <p><%= link_to "Mon profil", user_path(current_user.id), class:"fas fa-user-alt", id:"showProfile"%></p>
+          <p><a href="#"> <i class="fas fa-heart "> Mes coups de coeur</i></a></p>
+          <p><%= link_to "Deconnecter", session_path(current_user.id), method: :delete, class:"fas fa-sign-out-alt" %>
+        <% else %>
+          <p><a href="/users/new"><i class="fas fa-sign-out-alt"> S'incrire</i></a></p>
+          <p><a href="/sessions/new"><i class="fas fa-sign-out-alt"> Se connecter</i></a></p>
+        <% end %>
+      </header>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
