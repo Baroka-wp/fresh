@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
 
   def index
+    @user = User.find(8)
     @users = User.all
   end
 
@@ -20,6 +21,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @curentData = 1
+    @users = User.all.where.not(sexe: current_user.sexe)
+    @lght = @users[@curentData].name
   end
 
   def edit
