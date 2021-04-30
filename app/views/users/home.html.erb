@@ -1,0 +1,77 @@
+
+
+<div class="bodyBag">
+  <% if @i == 10 %>
+  <div class="">
+    <div id="container" class="userContainer">
+       <div id="userShow" class="userShow">
+           <div class=" userDetail">
+           </div>
+        </div>
+    </div>
+    <div class="popup-container" id="user-popup">
+       <div class="popup">
+         <a href="/like" id="close-popup" class="close-popup"><i class="fas fa-times"></i></a>
+         <div class="user-info" id="user-info">
+           <p>Vous avez tout vu</p>
+         </div>
+         </div>
+      </div>
+  </div>
+  <% else %>
+<div class="bodyBag" id="bodyBag">
+    <div id="container" class="userContainer">
+
+      <% unless current_user.breaking?(@user) %>
+      <div class="fav-btn">
+        <%= form_with(model: current_user.active_breakships.build(breaked_id: @user.id))  do |f| %>
+          <%= f.hidden_field :breaked_id %>
+          <%= f.submit "Canard" %>
+          <i class=" fas fa-heart-broken active"></i>
+        <% end %>
+      </div>
+    <% end %>
+       <div id="userShow" class="userShow">
+           <%= image_tag @user.profil.url, id:"userProfile"%>
+           <div class=" userDetail">
+           <div>
+             <h3 id="userName"><%= @user.name %></h3>
+             <p id="userSexe"><%= @user.sexe %></p>
+           </div>
+           <div class="user-body ">
+             <button class="fav-btn">
+               <i class="fas fa-heart active"> 50 %</i>
+             </button>
+           </div>
+         </div>
+       </div>
+       <% unless current_user.following?(@user) %>
+       <div class="fav-btn">
+         <%= form_with(model: current_user.active_relationships.build(followed_id: @user.id))  do |f| %>
+            <%= f.hidden_field :followed_id %><i class="fas fa-heart active"></i>
+            <%= f.submit "Lapin!" , class:"fas fa-heart active" %>
+          <% end %>
+       </div>
+       <% end %>
+       </div>
+     </div>
+     <div class="popup-container hidden" id="user-popup">
+        <div class="popup">
+          <button id="close-popup" class="close-popup"><i class="fas fa-times"></i></button>
+            <%= image_tag @user.profil.url, id:"userProfile"%>
+            <div class="right">
+            <h1><%= @user.name %></h1>
+            <div class="fav-btn">
+              <i class="fas fa-heart active"> 50% </i> <small>de compatibilité avec <%= @user.name %></small>
+            </div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo aliquam, consequuntur iste, quo quasi
+              facere libero, assumenda cum similique voluptates quis id deleniti soluta? Minus culpa magnam ullam dolore
+              doloribus?</p>
+            <div>
+            </div>
+          </div>
+          </div>
+      </div>
+      </div>
+<% end %>
+<%= javascript_pack_tag 'home' %>

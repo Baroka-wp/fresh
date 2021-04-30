@@ -2,6 +2,28 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
 
+
+  def break
+    @user = User.find(current_user.id)
+  end
+
+  def like
+    @user = User.find(current_user.id)
+  end
+
+  def home
+    @users = User.all.where.not(sexe: current_user.sexe)
+    @userData = @users.length()
+    @currentData = rand(0...@userData)
+    @user = @users[@currentData]
+    @i = 0
+    while current_user.following?(@user) &&  @i<10 do
+      @currentData = rand(0...@userData)
+      @user = @users[@currentData]
+      @i=@i+1
+    end
+  end
+
   def index
     @user = User.find(8)
     @users = User.all
@@ -21,9 +43,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @curentData = 1
-    @users = User.all.where.not(sexe: current_user.sexe)
-    @lght = @users[@curentData].name
   end
 
   def edit

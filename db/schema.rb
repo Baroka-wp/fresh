@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_134643) do
+ActiveRecord::Schema.define(version: 2021_04_30_113356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "breakships", force: :cascade do |t|
+    t.integer "breaker_id"
+    t.integer "breaked_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["breaked_id"], name: "index_breakships_on_breaked_id"
+    t.index ["breaker_id", "breaked_id"], name: "index_breakships_on_breaker_id_and_breaked_id", unique: true
+    t.index ["breaker_id"], name: "index_breakships_on_breaker_id"
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"

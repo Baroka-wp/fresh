@@ -19,31 +19,4 @@
   </div>
 </div>
 
-<div id="">
-<% unless current_user.following?(@user) %>
-  <%= form_with(model: current_user.active_relationships.build(followed_id: @user.id))  do |f| %>
-    <%= f.hidden_field :followed_id %>
-    <%= f.submit "Aimer" %>
-  <% end %>
-<% else %>
-  <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id), method: :delete ) do |f| %>
-    <%= f.submit "ne pas aimer" %>
-  <% end %>
-<% end %>
-</div>
-
-
-<div class="">
-  <p>Mes coups de coeur</p>
-  <% @user.following.each do |following|%>
-    <%= following.name %>
-  <% end %>
-  <br>
-  <p>Ceux qui voudraient me voir</p>
-  <% @user.followers.each do |follower|%>
-    <%= follower.name %>
-  <% end %>
-</div>
-
 <%= javascript_pack_tag 'home' %>
-<%= javascript_pack_tag 'test' %>

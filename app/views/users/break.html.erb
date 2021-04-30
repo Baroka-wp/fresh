@@ -1,0 +1,14 @@
+<div class="likes" id="userLikes">
+    <h3>Mes Canards</h3>
+    <ul class="fav-user" id="fav-user">
+      <% @user.breaking.each do |breaking|%>
+      <li>
+        <%= image_tag breaking.profil.url%>
+        <span><a href="/users/<%= breaking.id %>"><%= breaking.name %></a></span>
+        <%= form_with(model: current_user.active_breakships.find_by(breaked_id: breaking.id), method: :delete ) do |f| %>
+          <%= f.submit "X",class:"clear fas fa-window-close" %>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+</div>

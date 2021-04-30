@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  breaker_id: 1
+  breaked_id: MyString
+
+two:
+  breaker_id: 1
+  breaked_id: MyString

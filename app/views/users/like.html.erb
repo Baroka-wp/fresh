@@ -1,0 +1,14 @@
+<div class="likes" id="userLikes">
+    <h3>Mes Lapins</h3>
+    <ul class="fav-user" id="fav-user">
+      <% @user.following.each do |following|%>
+      <li>
+        <%= image_tag following.profil.url%>
+        <span><a href="/users/<%= following.id %>"><%= following.name %></a></span>
+        <%= form_with(model: current_user.active_relationships.find_by(followed_id: following.id), method: :delete ) do |f| %>
+          <%= f.submit "X",class:"clear fas fa-window-close" %>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+</div>

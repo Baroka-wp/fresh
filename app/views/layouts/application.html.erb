@@ -19,17 +19,17 @@
     <div class="container">
       <header>
         <% if logged_in? %>
-          <p><%= link_to "Mon profil", user_path(current_user.id), class:"fas fa-user-alt", id:"showProfile"%></p>
-          <p><a href="#"> <i class="fas fa-heart "> Mes coups de coeur</i></a></p>
-          <p><%= link_to "Deconnecter", session_path(current_user.id), method: :delete, class:"fas fa-sign-out-alt" %>
+        <p><%= link_to "Home", home_path, class:"fas fa-home"%></p>
+          <p><%= link_to " Mon profil", user_path(current_user.id), class:"fas fa-user-alt", id:"showProfile"%></p>
+          <p><%= link_to " Mes lapins", like_path(current_user.id), class:"fas fa-heart", id:"coupDeCoeur"%></p>
+          <p><%= link_to " Mes Canards", break_path(current_user.id), class:"fas fa-heart-broken", id:"break"%></p>
+          <p><%= link_to " Deconnecter", session_path(current_user.id), method: :delete, class:"fas fa-sign-out-alt" %>
         <% else %>
           <p><a href="/users/new"><i class="fas fa-sign-out-alt"> S'incrire</i></a></p>
           <p><a href="/sessions/new"><i class="fas fa-sign-out-alt"> Se connecter</i></a></p>
         <% end %>
       </header >
-      <div class="content">
         <%= yield %>
-      </div>
     </div>
   </body>
 </html>
